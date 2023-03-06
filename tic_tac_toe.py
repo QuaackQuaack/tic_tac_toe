@@ -38,14 +38,46 @@ lst2 = ['O','X','O','X','O','X','O','X','O']
 if player1_mark == "X" : choosing = lst1
 else: choosing = lst2
 
+
+#to determine which player is winner
+def winner_determiner(lst_value_for_board):
+    if lst_value_for_board[0]==lst_value_for_board[1]==lst_value_for_board[2]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[0]==lst_value_for_board[3]==lst_value_for_board[6]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[0]==lst_value_for_board[4]==lst_value_for_board[8]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[3]==lst_value_for_board[4]==lst_value_for_board[5]:
+        print(f'Player with mark {lst_value_for_board[3]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[6]==lst_value_for_board[7]==lst_value_for_board[8]:
+        print(f'Player with mark {lst_value_for_board[7]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[2]==lst_value_for_board[4]==lst_value_for_board[6]:
+        print(f'Player with mark {lst_value_for_board[6]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[1]==lst_value_for_board[4]==lst_value_for_board[7]: 
+        print(f'Player with mark {lst_value_for_board[4]} wins the game. UwU')
+        return 'a'
+    elif lst_value_for_board[2]==lst_value_for_board[5]==lst_value_for_board[8]: 
+        print(f'Player with mark {lst_value_for_board[2]} wins the game. UwU')
+        return 'a'
+    else:
+        return
+
+
 #now gaming part
 def gaming(choosing,value_for_board):
+    run_time_counter = 0 #to print it's game over after 9 steps
     checker = []
     count =  0 
     #------------------note try and except is remaing to code-------------- 
     #to convert string into list for assignment
     lst_value_for_board = [i for i in value_for_board]
-    while count < 2 : # for debug lets put value of count as 2
+    while count < 9 : # for debug lets put value of count as 2
         try:
             if count % 2 == 0:
                 print(f"It is player one turn and his/her mark is {choosing[count]} \n")
@@ -53,8 +85,9 @@ def gaming(choosing,value_for_board):
                 lst_value_for_board[player1_entry] = choosing[count]
                 checker.append(player1_entry)
                 board(lst_value_for_board)
-                print(lst_value_for_board)
-                #winner_determiner(lst_value_for_board)
+                a= winner_determiner(lst_value_for_board)
+                #to break the function right after winner is decided 
+                if a == 'a' : break
 
           #  print(choosing[count]) #debug 
             else:
@@ -63,44 +96,25 @@ def gaming(choosing,value_for_board):
                 lst_value_for_board[player2_entry] = choosing[count]
                 checker.append(player2_entry)
                 board(lst_value_for_board)
-                #winner_determiner(lst_value_for_board)
+                a = winner_determiner(lst_value_for_board)
+                if a == 'a': break
             #print(choosing[count]) #debug
             if player1_entry not in checker and  player2_entry not in checker:
                 raise Exception()
         except:
             print("-------ok you need to play this seriously-------")
             print("please enter only X and O, only those slot which are not occupied\n")
+            board(lst_value_for_board)
             continue
         count +=1
-    return checker,lst_value_for_board
-
+        run_time_counter +=1
+    return checker,lst_value_for_board,run_time_counter
 
 
 #checker is to check whether the slot is already full or not
-checker,lst_value_for_board = gaming(choosing,value_for_board)
+checker,lst_value_for_board,run_time_counter = gaming(choosing,value_for_board)
 
-#to determine which player is winner
-def winner_determiner(lst_value_for_board):
-    count = 0 
-    while count < 9:
-        if lst_value_for_board[0]==lst_value_for_board[1]==lst_value_for_board[2]:
-            print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
-        elif lst_value_for_board[0]==lst_value_for_board[3]==lst_value_for_board[6]:
-            print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
-        elif lst_value_for_board[0]==lst_value_for_board[4]==lst_value_for_board[8]:
-            print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
-        elif lst_value_for_board[3]==lst_value_for_board[4]==lst_value_for_board[5]:
-            print(f'Player with mark {lst_value_for_board[3]} wins the game. UwU')
-        elif lst_value_for_board[6]==lst_value_for_board[7]==lst_value_for_board[8]:
-            print(f'Player with mark {lst_value_for_board[7]} wins the game. UwU')
-        elif lst_value_for_board[2]==lst_value_for_board[4]==lst_value_for_board[6]:
-            print(f'Player with mark {lst_value_for_board[6]} wins the game. UwU')
-        elif lst_value_for_board[1]==lst_value_for_board[4]==lst_value_for_board[7]: 
-            print(f'Player with mark {lst_value_for_board[4]} wins the game. UwU')
-        elif lst_value_for_board[2]==lst_value_for_board[5]==lst_value_for_board[8]: 
-            print(f'Player with mark {lst_value_for_board[2]} wins the game. UwU')
-        else:
-            continue
-    count +=1
-
- 
+def game_over(run_time_counter):
+    if run_time_counter == 8 :
+        print("\ngame is over and we all had fun, see yah ")
+game_over(run_time_counter)
