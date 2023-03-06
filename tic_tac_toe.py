@@ -1,7 +1,6 @@
 #making of board
 def board(value):
-    print("welcome to game tictactoe ")
-    print("\n")
+    print("------welcome to game tictactoe------")
     print(f'''
             {value[0]}  {value[1]}  {value[2]}
             {value[3]}  {value[4]}  {value[5]}
@@ -43,6 +42,7 @@ else: choosing = lst2
 def gaming(choosing,value_for_board):
     checker = []
     count =  0 
+    #------------------note try and except is remaing to code-------------- 
     #to convert string into list for assignment
     lst_value_for_board = [i for i in value_for_board]
     while count < 9 : # for debug lets put value of count as 2
@@ -51,6 +51,7 @@ def gaming(choosing,value_for_board):
             player1_entry = int(input("enter number between 0 to 8 only\n"))
             lst_value_for_board[player1_entry] = choosing[count]
             checker.append(player1_entry)
+            board(lst_value_for_board)
           #  print(choosing[count]) #debug 
            
         
@@ -59,6 +60,7 @@ def gaming(choosing,value_for_board):
             player2_entry = int(input('enter number between 0 to 8 only\n'))
             lst_value_for_board[player2_entry] = choosing[count]
             checker.append(player2_entry)
+            board(lst_value_for_board)
             #print(choosing[count]) #debug
 
         count += 1 
@@ -66,9 +68,9 @@ def gaming(choosing,value_for_board):
     return checker,lst_value_for_board
 #checker is to check whether the slot is already full or not
 checker,lst_value_for_board = gaming(choosing,value_for_board)
-board(lst_value_for_board)
 
-
+to determine which player is winner
+def winner_determiner(lst_value_for_board)
 
     
 
