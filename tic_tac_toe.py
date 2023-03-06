@@ -46,26 +46,33 @@ def gaming(choosing,value_for_board):
     #to convert string into list for assignment
     lst_value_for_board = [i for i in value_for_board]
     while count < 9 : # for debug lets put value of count as 2
-        if count % 2 == 0:
-            print(f"It is player one turn and his/her mark is {choosing[count]} \n")
-            player1_entry = int(input("enter number between 0 to 8 only\n"))
-            lst_value_for_board[player1_entry] = choosing[count]
-            checker.append(player1_entry)
-            board(lst_value_for_board)
+        try:
+            if count % 2 == 0:
+                print(f"It is player one turn and his/her mark is {choosing[count]} \n")
+                player1_entry = int(input("enter number between 0 to 8 only\n"))
+                lst_value_for_board[player1_entry] = choosing[count]
+                checker.append(player1_entry)
+                board(lst_value_for_board)
+
           #  print(choosing[count]) #debug 
-           
-        
-        else:
-            print(f"It is player two turn and his/her mark is {choosing[count]} \n")
-            player2_entry = int(input('enter number between 0 to 8 only\n'))
-            lst_value_for_board[player2_entry] = choosing[count]
-            checker.append(player2_entry)
-            board(lst_value_for_board)
+            else:
+                print(f"It is player two turn and his/her mark is {choosing[count]} \n")
+                player2_entry = int(input('enter number between 0 to 8 only\n'))
+                lst_value_for_board[player2_entry] = choosing[count]
+                checker.append(player2_entry)
+                board(lst_value_for_board)
             #print(choosing[count]) #debug
-
-        count += 1 
-
+            if player1_entry not in checker and  player2_entry not in checker:
+                raise Exception()
+        except:
+            print("-------ok you need to play this seriously-------")
+            print("please enter only X and O, only those slot which are not occupied\n")
+            continue
+        count +=1
     return checker,lst_value_for_board
+
+
+
 #checker is to check whether the slot is already full or not
 checker,lst_value_for_board = gaming(choosing,value_for_board)
 
@@ -85,8 +92,10 @@ def winner_determiner(lst_value_for_board):
         print(f'Player with mark {lst_value_for_board[6]} wins the game. UwU')
     elif lst_value_for_board[1]==lst_value_for_board[4]==lst_value_for_board[7]: 
         print(f'Player with mark {lst_value_for_board[4]} wins the game. UwU')
-    else: 
+    elif lst_value_for_board[2]==lst_value_for_board[5]==lst_value_for_board[8]: 
         print(f'Player with mark {lst_value_for_board[2]} wins the game. UwU')
+    else:
+        continue
 
 winner_determiner(choosing)
            
