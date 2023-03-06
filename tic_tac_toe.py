@@ -1,4 +1,3 @@
-#making of board
 def board(value):
     print("------welcome to game tictactoe------")
     print(f'''
@@ -11,26 +10,27 @@ value_for_board = "012345678"
 board(value_for_board)
 
 #asking information with players
-def asking_personal_info():
-    valid_marks = ['X','O']
-    print("in this section you need to choose \n")
-    player1_mark= input("which mark do you want to play, either O or X? \n").upper()
-    try:
-        if player1_mark == "X": 
-            print("player 2 your mark is O\n")
-            player2_mark = 'O' #string ma xan hai input haru
-        else:
-            print("\nplayer 2 your mark is X")
-            player2_mark = 'X'
-        if player1_mark not in valid_marks: 
-            raise Exception
 
-    except:
-        print("please yr don't be oversmart , just choose between X and O\n")
-        
-       
-    return player1_mark , player2_mark 
-player1_mark, player2_mark = asking_personal_info()
+valid_marks = ['X','O']
+print("in this section you need to choose \n")
+n = 0 
+while n < 1 : #to use continue we need some loop
+  try:
+    player1_mark= input("which mark do you want to play, either O or X? \n").upper()
+    if player1_mark == "X": 
+      print("player 2 your mark is O\n")
+      player2_mark = 'O' #string ma xan hai input haru
+    elif player1_mark =="O":
+      print("\nplayer1 your mark is O")
+      player2_mark = 'X'
+    if player1_mark not in valid_marks:
+        raise Exception()
+  except:
+    print("\t----warning---\t")
+    print("User are requested to entered O and X only\n")
+    continue
+  n+=1
+#note continue is used with for and while loop only :) so we used for in line 17
 
 #to get X and O in each player turns
 lst1 = ['X','O','X','O','X','O','X','O','X']
@@ -89,11 +89,4 @@ def winner_determiner(lst_value_for_board):
         print(f'Player with mark {lst_value_for_board[2]} wins the game. UwU')
 
 winner_determiner(choosing)
-        
-    
-
-
-    
-
-        
-    
+           
