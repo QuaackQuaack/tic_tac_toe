@@ -118,3 +118,4 @@ def game_over(run_time_counter):
     if run_time_counter == 8 :
         print("\ngame is over and we all had fun, see yah ")
 game_over(run_time_counter)
+#small edit for git merge learning
