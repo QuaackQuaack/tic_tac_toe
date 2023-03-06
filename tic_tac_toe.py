@@ -7,7 +7,7 @@ def board(value):
             {value[6]}  {value[7]}  {value[8]} \n''')
     print("this is sample of board where number reperesents position of 'X' and 'O'")
 
-value_for_board = "123456789"
+value_for_board = "012345678"
 board(value_for_board)
 
 #asking information with players
@@ -69,9 +69,27 @@ def gaming(choosing,value_for_board):
 #checker is to check whether the slot is already full or not
 checker,lst_value_for_board = gaming(choosing,value_for_board)
 
-to determine which player is winner
-def winner_determiner(lst_value_for_board)
+#to determine which player is winner
+def winner_determiner(lst_value_for_board):
+    if lst_value_for_board[0]==lst_value_for_board[1]==lst_value_for_board[2]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+    elif lst_value_for_board[0]==lst_value_for_board[3]==lst_value_for_board[6]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+    elif lst_value_for_board[0]==lst_value_for_board[4]==lst_value_for_board[8]:
+        print(f'Player with mark {lst_value_for_board[0]} wins the game. UwU')
+    elif lst_value_for_board[3]==lst_value_for_board[4]==lst_value_for_board[5]:
+        print(f'Player with mark {lst_value_for_board[3]} wins the game. UwU')
+    elif lst_value_for_board[6]==lst_value_for_board[7]==lst_value_for_board[8]:
+        print(f'Player with mark {lst_value_for_board[7]} wins the game. UwU')
+    elif lst_value_for_board[2]==lst_value_for_board[4]==lst_value_for_board[6]:
+        print(f'Player with mark {lst_value_for_board[6]} wins the game. UwU')
+    elif lst_value_for_board[1]==lst_value_for_board[4]==lst_value_for_board[7]: 
+        print(f'Player with mark {lst_value_for_board[4]} wins the game. UwU')
+    else: 
+        print(f'Player with mark {lst_value_for_board[2]} wins the game. UwU')
 
+winner_determiner(choosing)
+        
     
 
 
