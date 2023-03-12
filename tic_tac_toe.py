@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def board(value):
     print("------welcome to game tictactoe------")
     print(f'''
