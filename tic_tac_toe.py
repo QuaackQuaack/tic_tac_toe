@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> test
 def board(value):
     print("------welcome to game tictactoe------")
     print(f'''
